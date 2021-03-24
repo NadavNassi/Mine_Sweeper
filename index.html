@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+
+<body onload="init()">
+    <h1>MINE SWEEPER</h1>
+    <div class="smiley">
+        
+    </div>
+    <div class="board">
+    </div>
+    <div class="asantiols">
+        <table>
+            <td class="time">00</td>
+            <td class="life"></td>
+            <td class="marked">00</td>
+        </table>
+    </div>
+
+    <div class="difficulty">
+        <input type="radio" name="difficulty" value="16" onclick="getSize(4, 2)" checked> 4 X 4
+        <input type="radio" name="difficulty" value="64" onclick="getSize(8, 12)"> 8 X 8
+        <input type="radio" name="difficulty" value="144" onclick="getSize(12, 30)"> 12 X 12
+    </div>
+    
+    <div class="modal">
+        <button onclick="restart()">RESTART?</button>
+    </div>
+    <div class="hints">
+
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/cells.js"></script>
+    <script src="js/mines.js"></script>
+    <script src="js/bonus.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>

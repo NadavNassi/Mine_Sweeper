@@ -1,0 +1,64 @@
+body{
+    background-color: aqua;
+    text-align: center;
+    transform: 1s;
+}
+
+table{
+    margin:auto;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+th {
+    height: 35px;
+    border: none;
+}
+
+td{
+    background-color: grey;
+    width: 35px;
+    height: 35px;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+.board td:hover{
+    cursor: pointer;
+    border: 5px solid red;
+}
+
+.clicked {
+    background-color: white;
+}
+
+.asantiols{
+    margin: 10px auto;
+}
+
+.life{
+    width: 60px;
+}
+
+.difficulty{
+    margin: 25px auto;
+}
+
+.modal {
+    margin: 20px auto;
+    display: none;
+}
+
+.far {
+    font-size: 3rem;
+    margin: 20px 20px;
+}
+
+.fas {
+    font-size: 3rem;
+    margin: 20px 20px;
+}
+
+.far:hover {
+    cursor: pointer;
+}
