@@ -30,7 +30,7 @@ function printMat(mat, selector) {
         for (var j = 0; j < mat[0].length; j++) {
             var cell = mat[i][j];
             var className = `cell cell-${i}-${j}`;
-            strHTML += `<td class="${className}" onclick="cellClicked(this, ${i}, ${j}), bonusRevile(${i}, ${j})" oncontextmenu="cellMarked(this, ${i}, ${j})"></td>`
+            strHTML += `<td class="${className}" onclick="cellClicked(this, ${i}, ${j}), hintRevile(${i}, ${j})" oncontextmenu="cellMarked(this, ${i}, ${j})"></td>`
         }
         strHTML += '</tr>'
     }
