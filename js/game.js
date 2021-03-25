@@ -1,35 +1,5 @@
 'use strict'
 
-var gBoard = [];
-
-var gNormal = '😊'
-var gLose = '🤯'
-var gWin = '😎'
-var gLife = '❤'
-
-var gLevel = {
-    SIZE: 4,
-    MINES: 2
-};
-
-
-var gGame = {
-    isOn: false,
-    shownCount: 0,
-    markedCount: 0,
-    secsPassed: 0,
-    isWin: false,
-    isHint: false
-}
-
-
-var gLifes = []
-
-var gTimeInterval;
-
-var gElModal = document.querySelector('.modal')
-var gElDifficulty = document.querySelector('.difficulty')
-var gElSmiley = document.querySelector('.smiley')
 
 
 function init() {
@@ -39,16 +9,19 @@ function init() {
     if (gLevel.SIZE === 4) renderLife(2);
     else renderLife(3)
     renderHints()
+    renderHighScore()
 }
 
+
+
 function startGame(elCell, i, j) {
+    gGame.isOn = true;
     gElDifficulty.style.display = 'none';
     gBoard = getMat(gLevel.SIZE, i, j)
     printMat(gBoard, '.board')
     var minesPosition = [];
     minesPosition = setMinesPosition(i, j)
     setMines(gBoard, minesPosition)
-    gGame.isOn = true;
     cellClicked(elCell, i, j)
     startTime();
 }
@@ -60,14 +33,17 @@ function startTime() {
     gTimeInterval = setInterval(() => {
         var currTime = Date.now()
         var passedTime = new Date(currTime - sTime)
-        gGame.secsPassed = (passedTime.getSeconds() < 10) ? '0' + passedTime.getSeconds() : passedTime.getSeconds();
-        elTimeTd.innerText = `${gGame.secsPassed}`
+        var secs = passedTime.getSeconds()
+        var minutes = passedTime.getMinutes()
+        var time = minutes * 60 + secs
+        gGame.secsPassed = minutes * 60 + secs;
+        elTimeTd.innerText = time
     }, 1000)
 }
 
 function renderLife(size) {
     var elLife = document.querySelector('.life');
-    var str= '';
+    var str = '';
     gLifes = []
     for (var i = 0; i < size; i++) {
         gLifes.push(gLife)
@@ -85,14 +61,29 @@ function getSize(size, minesAmount) {
 }
 
 
-function checkGameOver() {}
+function checkGameOver() {
+    if (gGame.shownCount === gLevel.SIZE * gLevel.SIZE) {
+        gGame.isWin = true
+        gameOver()
+    };
+    if (gLevel.MINES === gGame.markedCount) {
+        gGame.isWin = true
+        gameOver()
+    };
+    if (!gLifes.length) {
+        gGame.isWin = false
+        gameOver()
+    };
+}
 
 function gameOver() {
+    checkIfNewHighScore()
+    renderHighScore()
     gElModal.style.display = 'block';
     gElDifficulty.style.display = 'block';
     clearInterval(gTimeInterval);
     gGame.isOn = false;
-    gElSmiley.innerText = (gGame.markedCount === gMines.length) ? gWin : gLose;
+    gElSmiley.innerText = (gGame.isWin) ? gWin : gLose;
 }
 
 function restart() {
@@ -102,10 +93,13 @@ function restart() {
         isOn: false,
         shownCount: 0,
         markedCount: 0,
-        secsPassed: 0
+        secsPassed: 0,
+        isWin: false
     }
     var elTimeTd = document.querySelector('.time');
     elTimeTd.innerText = '00'
+    var elFlags = document.querySelector('.marked')
+    elFlags.innerText = '00'
     gBoard = [];
     gLifes = []
     init();

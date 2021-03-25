@@ -1,9 +1,6 @@
 'use strict'
 
 
-window.document.oncontextmenu = function () {
-    return false;
-}
 
 
 function getMat(size, i, j) {

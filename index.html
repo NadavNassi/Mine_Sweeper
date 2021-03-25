@@ -12,6 +12,10 @@
 
 <body onload="init()">
     <h1>MINE SWEEPER</h1>
+    <div class="hints"></div>
+    <div class="safe">
+        <button class="btn-safe" onclick="useSafeClick()">SAFE CLICK</button>
+    </div>
     <div class="smiley">
         
     </div>
@@ -19,29 +23,37 @@
     </div>
     <div class="asantiols">
         <table>
-            <td class="time">00</td>
-            <td class="life"></td>
-            <td class="marked">00</td>
+            <tr>
+                <td>time</td>
+                <td>life remaines</td>
+                <td>flags</td>
+            </tr>
+            <tr>
+                <td class="time">0</td>
+                <td class="life"></td>
+                <td class="marked">00</td>
+            </tr>
         </table>
     </div>
-
+    
     <div class="difficulty">
         <input type="radio" name="difficulty" value="16" onclick="getSize(4, 2)" checked> 4 X 4
         <input type="radio" name="difficulty" value="64" onclick="getSize(8, 12)"> 8 X 8
         <input type="radio" name="difficulty" value="144" onclick="getSize(12, 30)"> 12 X 12
     </div>
+        <div class="modal">
+            <button onclick="restart()">RESTART?</button>
+        </div>
+
+        <div class="high-score"></div>
     
-    <div class="modal">
-        <button onclick="restart()">RESTART?</button>
-    </div>
-    <div class="hints">
 
-    </div>
-
+    <script src="js/globals.js"></script>
+    <script src="js/leadBoard.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/cells.js"></script>
     <script src="js/mines.js"></script>
-    <script src="js/bonus.js"></script>
+    <script src="js/hints.js"></script>
     <script src="js/game.js"></script>
 </body>
 

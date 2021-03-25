@@ -1,6 +1,5 @@
 'use strict'
 
-var gMines;
 
 
 function setMinesNegsCount(i, j) {
