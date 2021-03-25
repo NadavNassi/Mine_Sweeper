@@ -10,17 +10,18 @@ function init() {
     else renderLife(3)
     renderHints()
     renderHighScore()
+    renderSafeButton();
 }
 
 
 
 function startGame(elCell, i, j) {
-    gGame.isOn = true;
     gElDifficulty.style.display = 'none';
     gBoard = getMat(gLevel.SIZE, i, j)
     printMat(gBoard, '.board')
     var minesPosition = [];
     minesPosition = setMinesPosition(i, j)
+    gGame.isOn = true;
     setMines(gBoard, minesPosition)
     cellClicked(elCell, i, j)
     startTime();
@@ -51,6 +52,11 @@ function renderLife(size) {
         str += '|'
     }
     elLife.innerText = str
+}
+
+function renderSafeButton() {
+    var elSafe = document.querySelector('.safe');
+    elSafe.innerHTML = `<button class="btn-safe" onclick="useSafeClick()">SAFE CLICKS LEFT: ${gSafe}</button>`
 }
 
 

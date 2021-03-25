@@ -17,6 +17,8 @@ function cellClicked(elCell, i, j) {
         gGame.isSafe = false;
         gGame.shownCount++;
         gBoard[i][j].isShown = true;
+        renderSafeButton();
+        return;
         if (gBoard[i][j].isMine) gGame.markedCount++;
         return;
     }
@@ -88,7 +90,7 @@ function renderCell(i, j, value) {
     elCell.classList.add('clicked')
     gBoard[i][j].isShown = true;
     gGame.shownCount++;
-    elCell.innerHTML = value;
+    elCell.innerHTML = (value === 0) ? '' : value;
 }
 
 function useSafeClick() {
@@ -97,7 +99,7 @@ function useSafeClick() {
         gSafe--;
     } else {
         var elSafeBtn = document.querySelector('.safe')
-        elSafeBtn = '<button class="btn-safe" onclick="useSafeClick()" disabled>SAFE CLICK</button>'
+        elSafeBtn = '<button class="btn-safe" onclick="useSafeClick()" disable>SAFE CLICK</button>'
     }
 }
 
