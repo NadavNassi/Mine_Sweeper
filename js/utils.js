@@ -21,7 +21,7 @@ function getMat(size, i, j) {
 }
 
 function printMat(mat, selector) {
-    var strHTML = `<table border="1"><tbody>`;
+    var strHTML = `<table class="board-container"><tbody>`;
     for (var i = 0; i < mat.length; i++) {
         strHTML += '<tr>';
         for (var j = 0; j < mat[0].length; j++) {

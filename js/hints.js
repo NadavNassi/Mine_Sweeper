@@ -3,7 +3,7 @@
 
 function renderHints() {
     var elHint = document.querySelector('.hints');
-    var strHtml = '';
+    var strHtml = '<h3>Click the bulb for hint</h3>';
     for (var i = 0; i < 3; i++) {
         strHtml += `<i class="far fa-lightbulb far-${i}" onclick="useHint(this)"></i>`
     }

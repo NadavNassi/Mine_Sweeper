@@ -3,19 +3,27 @@
 
 
 function init() {
-    gElSmiley.innerText = gNormal
     gBoard = getMat(gLevel.SIZE)
     printMat(gBoard, '.board')
     if (gLevel.SIZE === 4) renderLife(2);
     else renderLife(3)
-    renderHints()
+    var elHint = document.querySelector('.hints');
+    elHint.style.display = 'none';
+    var elSafe = document.querySelector('.safe');
+    elSafe.style.display = 'none';
     renderHighScore()
-    renderSafeButton();
 }
 
 
 
 function startGame(elCell, i, j) {
+    var elHint = document.querySelector('.hints');
+    elHint.style.display = 'block';
+    var elSafe = document.querySelector('.safe');
+    elSafe.style.display = 'block';
+    renderHints()
+    renderSafeButton();
+    gElSmiley.innerHTML = `<i class=smiley>${gNormal}</i>`
     gElDifficulty.style.display = 'none';
     gBoard = getMat(gLevel.SIZE, i, j)
     printMat(gBoard, '.board')
@@ -56,7 +64,7 @@ function renderLife(size) {
 
 function renderSafeButton() {
     var elSafe = document.querySelector('.safe');
-    elSafe.innerHTML = `<button class="btn-safe" onclick="useSafeClick()">SAFE CLICKS LEFT: ${gSafe}</button>`
+    elSafe.innerHTML = `<h3>Click the button for no conseqences</h3><button class="btn-safe" onclick="useSafeClick()">SAFE CLICKS LEFT: ${gSafe}</button>`
 }
 
 

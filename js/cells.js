@@ -105,32 +105,3 @@ function useSafeClick() {
 
 
 
-
-
-// function expandShown(board, idx, jdx) {
-//     if (!board[idx][jdx].isMine && !board[idx][jdx].isMark && !board[idx][jdx].isShown && !board[idx][jdx].minesAroundCount) {
-//         board[idx][jdx].isShown = true;
-//         renderCell(idx, jdx, '');
-//         gGame.shownCount++;
-//         renderCells(idx, jdx);
-//     } else if (board[idx][jdx].minesAroundCount >= 0 && !board[idx][jdx].isShown) {
-//         gBoard[idx][jdx].isShown = true;
-//         renderCell(idx, jdx, board[idx][jdx].minesAroundCount);
-//         gGame.shownCount++;
-//     }
-// }
-
-// function renderCells(idx, jdx) {
-//     for (var i = idx - 1; i <= idx + 1; i++) {
-//         if (i < 0 || i >= gBoard.length) continue;
-//         for (var j = jdx - 1; j <= jdx + 1; j++) {
-//             if (i === idx && j === jdx)
-//                 continue;
-//             if (j < 0 || j >= gBoard[i].length)
-//                 continue;
-//             if (gBoard[i][j].minesAroundCount >= 0 && !gBoard[i][j].isShown) {
-//                 expandShown(gBoard, i, j);
-//             }
-//         }
-//     }
-// }
