@@ -23,7 +23,7 @@ function startGame(elCell, i, j) {
     elSafe.style.display = 'block';
     renderHints()
     renderSafeButton();
-    gElSmiley.innerHTML = `<i class=smiley>${gNormal}</i>`
+    gElSmiley.innerHTML = `<i class=smiley onclick="restart()">${gNormal}</i>`
     gElDifficulty.style.display = 'none';
     gBoard = getMat(gLevel.SIZE, i, j)
     printMat(gBoard, '.board')
